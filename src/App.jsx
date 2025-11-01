@@ -1,81 +1,30 @@
-import { useState } from 'react'
+import { Link, Route, BrowserRouter, Routes } from 'react-router-dom'
 import './App.css'
+import { ProductProvider } from './context/ProductContext'
+import HomePage from './pages/HomePage'
+import AdminPage from './pages/AdminPage'
 
 function App() {
-
-    const [item, setItem] = useState({
-        name: '',
-        description: '',
-        price: 0,
-    });
-
-    const [savedItem, setSavedItem] = useState({
-        name: '',
-        description: '',
-        price: 0,
-    })
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(item);
-        setSavedItem(item);
-        validatePrice();
-        validateText();
-    }
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setItem({
-            ...item,
-            [name]: value,
-        });
-    }
-    const validatePrice = () => {
-        if (Number(item.price) <= 0) {
-            alert("Price must be greater than 0");
-        }
-
-    }
-
-    const validateText= () => {
-      if (!item.name || !item.description) {
-          alert("Name and description must be filled");
-      }
-    }
   return (
-<>
-
-    <form >
-        <input type="text"
-               name="name"
-        value={item.name}
-               onChange={handleChange}
-               placeholder="Name"
-
-        />
-        <input type="text"
-               name="description"
-        value={item.description}
-               onChange={handleChange}
-               placeholder="Description"
-
-        />
-        <input type="number"
-               name="price"
-        value={item.price}
-               onChange={handleChange}
-               placeholder="Price"
-        />
-        <button type="submit" onClick={handleSubmit}>Submit</button>
-    </form>
-
-    <div>
-        <h1>{savedItem.name}</h1>
-        <p>{savedItem.description}</p>
-        <p>{savedItem.price? savedItem.price : "none items are saved"}</p>
-    </div>
-
-
-</>
+    <ProductProvider>
+      <BrowserRouter>
+        <nav className="nav">
+          <div className="container nav-inner">
+            <div className="brand">Shop</div>
+            <div className="nav-links">
+              <Link to="/">Home</Link>
+              <Link to="/admin">Admin</Link>
+            </div>
+          </div>
+        </nav>
+        <main className="container">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/admin" element={<AdminPage />} />
+          </Routes>
+        </main>
+      </BrowserRouter>
+    </ProductProvider>
   )
 }
 
