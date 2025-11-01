@@ -1,0 +1,7 @@
+{
+  "products": [
+    { "id": 1, "title": "Bag", "price": 600, "description": "Comfortable bag" },
+    { "id": 2, "title": "Crossbody", "price": 800, "description": "Men's crossbody bag" },
+    { "id": 3, "title": "Travel bag", "price": 1000, "description": "Large travel bag" }
+  ]
+}
