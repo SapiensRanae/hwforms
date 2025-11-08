@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useProducts } from "../context/ProductContext";
+import { useProducts } from "../context/useProducts";
 import ProductForm from "../admin/components/ProductForm";
 import ProductTable from "../admin/components/ProductTable";
 

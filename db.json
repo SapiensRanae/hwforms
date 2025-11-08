@@ -1,7 +1,67 @@
 {
   "products": [
-    { "id": 1, "title": "Bag", "price": 600, "description": "Comfortable bag" },
-    { "id": 2, "title": "Crossbody", "price": 800, "description": "Men's crossbody bag" },
-    { "id": 3, "title": "Travel bag", "price": 1000, "description": "Large travel bag" }
+    {
+      "id": 4,
+      "title": "Backpack",
+      "price": 1200,
+      "description": "Durable everyday backpack",
+      "image": "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": 5,
+      "title": "Messenger Bag",
+      "price": 900,
+      "description": "Laptop messenger bag",
+      "image": "https://images.unsplash.com/photo-1611461527944-1a718332613b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": 6,
+      "title": "Tote Bag",
+      "price": 700,
+      "description": "Stylish canvas tote",
+      "image": "https://images.unsplash.com/photo-1574365569389-a10d488ca3fb?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": 7,
+      "title": "Weekender",
+      "price": 1500,
+      "description": "Leather weekender bag",
+      "image": "https://images.unsplash.com/photo-1650542218150-5e59a58d4312?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": 8,
+      "title": "Laptop Sleeve 13-inch",
+      "price": 300,
+      "description": "Padded sleeve for 13-inch laptops",
+      "image": "https://images.unsplash.com/photo-1689757855413-9e366c2011f1?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8TGFwdG9wJTIwU2xlZXZlfGVufDB8fDB8fHww?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": 9,
+      "title": "Wallet",
+      "price": 200,
+      "description": "Compact leather wallet",
+      "image": "https://images.unsplash.com/photo-1579014134953-1580d7f123f3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8d2FsbGV0fGVufDB8fDB8fHww&auto=format?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": 10,
+      "title": "Duffel Bag",
+      "price": 1300,
+      "description": "Gym and short trip duffel",
+      "image": "https://images.unsplash.com/photo-1525103504173-8dc1582c7430?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": 11,
+      "title": "Camera Bag",
+      "price": 1100,
+      "description": "Padded DSLR camera bag",
+      "image": "https://images.unsplash.com/photo-1521134563007-647ff6127244?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": 12,
+      "title": "Passport Holder",
+      "price": 250,
+      "description": "Slim travel passport holder",
+      "image": "https://images.unsplash.com/photo-1549937917-8dbc49520960?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGFzc3BvcnQlMjBob2xkZXJ8ZW58MHx8MHx8fDA%3D?auto=format&fit=crop&w=600&q=80"
+    }
   ]
 }
