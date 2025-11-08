@@ -28,6 +28,7 @@ const ProductTable = ({ onEdit, onDelete }) => {
                                 src={p.image}
                                 alt={p.title}
                                 style={{ width: 50, height: 50, objectFit: "cover", borderRadius: 4 }}
+                                onError={(e) => { e.currentTarget.style.opacity = "0.3"; e.currentTarget.alt = "Image not found"; }}
                             />
                         ) : (
                             <span>—</span>
@@ -37,8 +38,8 @@ const ProductTable = ({ onEdit, onDelete }) => {
                     <td>{p.price}</td>
                     <td>{p.description}</td>
                     <td className="actions">
-                        <button onClick={() => onEdit(p)}>Edit</button>
-                        <button className="danger" onClick={() => onDelete(p.id)}>Delete</button>
+                        <button className="btn" onClick={() => onEdit(p)}>Edit</button>
+                        <button className="btn danger" onClick={() => onDelete(p.id)}>Delete</button>
                     </td>
                 </tr>
             ))}

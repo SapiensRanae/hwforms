@@ -34,10 +34,10 @@ const ProductList = () => {
             const q = search.toLowerCase();
             list = list.filter(p => p.title.toLowerCase().includes(q));
         }
-        const min = Number(minPrice);
-        const max = Number(maxPrice);
-        if (!Number.isNaN(min) && minPrice !== "") list = list.filter(p => p.price >= min);
-        if (!Number.isNaN(max) && maxPrice !== "") list = list.filter(p => p.price <= max);
+        const min = minPrice === "" ? null : Math.max(0, Number(minPrice));
+        const max = maxPrice === "" ? null : Math.max(0, Number(maxPrice));
+        if (min !== null && !Number.isNaN(min)) list = list.filter(p => p.price >= min);
+        if (max !== null && !Number.isNaN(max)) list = list.filter(p => p.price <= max);
 
         switch (sort) {
             case "price_asc": list.sort((a, b) => a.price - b.price); break;
@@ -56,9 +56,31 @@ const ProductList = () => {
     return (
         <>
             <div className="filters">
-                <input placeholder="Search by name" value={search} onChange={(e) => setSearch(e.target.value)} />
-                <input type="number" placeholder="Min price" value={minPrice} onChange={(e) => setMinPrice(e.target.value)} />
-                <input type="number" placeholder="Max price" value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)} />
+                <input
+                    placeholder="Search by name"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                />
+                <input
+                    type="number"
+                    min="0"
+                    placeholder="Min price"
+                    value={minPrice}
+                    onChange={(e) => {
+                        const v = e.target.value;
+                        setMinPrice(v === "" ? "" : Math.max(0, Number(v)));
+                    }}
+                />
+                <input
+                    type="number"
+                    min="0"
+                    placeholder="Max price"
+                    value={maxPrice}
+                    onChange={(e) => {
+                        const v = e.target.value;
+                        setMaxPrice(v === "" ? "" : Math.max(0, Number(v)));
+                    }}
+                />
                 <select value={sort} onChange={(e) => setSort(e.target.value)}>
                     <option value="none">No sort</option>
                     <option value="price_asc">Price: Low to High</option>
@@ -70,7 +92,11 @@ const ProductList = () => {
 
             <ul className="list">
                 {filtered.map((p, idx) => (
-                    <li key={p.id} className="card card-hover fade-in" style={{ animationDelay: `${idx * 60}ms` }}>
+                    <li
+                        key={p.id}
+                        className="card card-hover fade-in"
+                        style={{ animationDelay: `${idx * 60}ms` }}
+                    >
                         {p.image ? (
                             <div className="card-image">
                                 <img
@@ -82,11 +108,14 @@ const ProductList = () => {
                                 />
                             </div>
                         ) : (
-                            <div className="card-image placeholder" style={{
-                                width: "100%", height: 140, background: "#eee",
-                                display: "flex", alignItems: "center", justifyContent: "center",
-                                borderRadius: 8, fontSize: 12, color: "#666"
-                            }}>
+                            <div
+                                className="card-image placeholder"
+                                style={{
+                                    width: "100%", height: 140,
+                                    display: "flex", alignItems: "center", justifyContent: "center",
+                                    borderRadius: 8, fontSize: 12
+                                }}
+                            >
                                 No image
                             </div>
                         )}
@@ -103,7 +132,11 @@ const ProductList = () => {
                 ))}
             </ul>
 
-            <Modal open={!!selected} onClose={closeModal} title={success ? "Success" : selected?.title || ""}>
+            <Modal
+                open={!!selected}
+                onClose={closeModal}
+                title={success ? "Success" : selected?.title || ""}
+            >
                 {!success ? (
                     <div className="purchase">
                         <p>Buy <strong>{selected?.title}</strong> for <strong>${selected?.price}</strong>?</p>

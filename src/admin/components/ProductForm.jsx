@@ -20,14 +20,19 @@ const ProductForm = ({ onAdd, onSave, editing }) => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setForm((f) => ({ ...f, [name]: name === "price" ? Number(value) : value }));
+        if (name === "price") {
+            const num = value === "" ? "" : Math.max(0, Number(value));
+            setForm(f => ({ ...f, price: num }));
+        } else {
+            setForm(f => ({ ...f, [name]: value }));
+        }
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!form.title || !form.description) return;
-        if (Number(form.price) <= 0) return;
-        const payload = { ...form };
+        if (form.price === "" || Number(form.price) < 0) return;
+        const payload = { ...form, price: Number(form.price) };
         if (editing) {
             onSave({ ...editing, ...payload });
         } else {
@@ -38,11 +43,38 @@ const ProductForm = ({ onAdd, onSave, editing }) => {
 
     return (
         <form onSubmit={handleSubmit} className="form">
-            <input name="title" value={form.title} onChange={handleChange} placeholder="Name" />
-            <input name="price" type="number" value={form.price} onChange={handleChange} placeholder="Price" />
-            <input name="description" value={form.description} onChange={handleChange} placeholder="Description" />
-            <input name="image" value={form.image} onChange={handleChange} placeholder="Image URL (/images/xxx.jpg or https://)" />
-            <button type="submit">{editing ? "Save changes" : "Add product"}</button>
+            <input
+                name="title"
+                value={form.title}
+                onChange={handleChange}
+                placeholder="Name"
+            />
+            <input
+                name="price"
+                type="number"
+                min="0"
+                value={form.price}
+                onChange={handleChange}
+                placeholder="Price (>= 0)"
+            />
+            <input
+                name="description"
+                value={form.description}
+                onChange={handleChange}
+                placeholder="Description"
+            />
+            <input
+                name="image"
+                value={form.image}
+                onChange={handleChange}
+                placeholder="Image URL (/images/xxx.jpg or https://)"
+            />
+            <button
+                type="submit"
+                className={editing ? "btn primary" : "btn"}
+            >
+                {editing ? "Save changes" : "Add product"}
+            </button>
         </form>
     );
 };

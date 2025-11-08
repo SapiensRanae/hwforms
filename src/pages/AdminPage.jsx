@@ -81,7 +81,7 @@ const AdminPage = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Minimal demo auth: admin / admin
+
     if (login.username === "admin" && login.password === "admin") {
       localStorage.setItem("isAdmin", "true");
       setIsAdmin(true);
@@ -96,44 +96,44 @@ const AdminPage = () => {
     setIsAdmin(false);
   };
 
-  if (!isAdmin) {
-    return (
-      <div className="container">
-        <h1>Admin Login</h1>
-        <form onSubmit={handleLogin} className="form">
-          <input
-            name="username"
-            placeholder="Username"
-            value={login.username}
-            onChange={handleAuthChange}
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={login.password}
-            onChange={handleAuthChange}
-          />
-          <button type="submit">Login</button>
-          {error && <div className="error">{error}</div>}
-        </form>
-      </div>
-    );
-  }
+    if (!isAdmin) {
+        return (
+            <div className="container">
+                <h1>Admin Login</h1>
+                <form onSubmit={handleLogin} className="form">
+                    <input
+                        name="username"
+                        placeholder="Username"
+                        value={login.username}
+                        onChange={handleAuthChange}
+                    />
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        value={login.password}
+                        onChange={handleAuthChange}
+                    />
+                    <button type="submit" className={"btn"}>Login</button>
+                    {error && <div className="error">{error}</div>}
+                </form>
+            </div>
+        );
+    }
 
-  return (
-    <div className="container">
-      <div className="header-row">
-        <h1>Admin: Product Management</h1>
-        <button onClick={handleLogout}>Logout</button>
-      </div>
-      {error && <div className="error">{error}</div>}
-      {saving && <div className="muted">Saving...</div>}
-      <ProductForm onAdd={handleAdd} onSave={handleSave} editing={editing} />
-      <hr />
-      <ProductTable onEdit={setEditing} onDelete={handleDelete} />
-    </div>
-  );
+    return (
+        <div className="container">
+            <div className="header-row">
+                <h1>Admin: Product Management</h1>
+                <button className="btn" onClick={handleLogout}>Logout</button>
+            </div>
+            {error && <div className="error">{error}</div>}
+            {saving && <div className="muted">Saving...</div>}
+            <ProductForm onAdd={handleAdd} onSave={handleSave} editing={editing} />
+            <hr />
+            <ProductTable onEdit={setEditing} onDelete={handleDelete} />
+        </div>
+    );
 };
 
 export default AdminPage;
